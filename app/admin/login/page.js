@@ -6,8 +6,8 @@ import { useAuth } from "@/context/authContext";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("test@example.com");
-  const [password, setPassword] = useState("password123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const { auth, setAuth } = useAuth();
@@ -17,25 +17,25 @@ export default function LoginPage() {
     return null;
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const result = await res.json();
-    if (res.ok) {
-      setAuth({isLoggedIn: true, user: result.user});
-      router.push("/admin/dashboard");
-    } else {
-      const data = await res.json();
-      setError(data.error || "Login failed");
-    }
-  };
+  //   const res = await fetch("/api/auth/login", {
+  //     method: "POST",
+  //     body: JSON.stringify({ email, password }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const result = await res.json();
+  //   if (res.ok) {
+  //     setAuth({isLoggedIn: true, user: result.user});
+  //     router.push("/admin/dashboard");
+  //   } else {
+  //     const data = await res.json();
+  //     setError(data.error || "Login failed");
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
