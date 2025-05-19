@@ -9,7 +9,7 @@ export default function NotFound() {
         <h1 className="text-6xl font-bold text-blue-600 mb-2">404</h1>
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Page Not Found</h2>
         <p className="text-gray-600 mb-8">
-          Oops! It seems like you've wandered off to an unexplored corner of Atithi Stay. Let's get you back on track.
+          Oops! It seems like you&apos;ve wandered off to an unexplored corner of Atithi Stay. Let&apos;s get you back on track.
         </p>
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-teal-600 rounded-lg blur opacity-25"></div>

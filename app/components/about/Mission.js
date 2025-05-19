@@ -54,9 +54,9 @@ export default function Mission() {
             Our Mission
           </h2>
           <p className="text-xl text-gray-600">
-            We're on a mission to redefine how people interact with digital
+            We&apos;re on a mission to redefine how people interact with digital
             spaces, creating environments that inspire creativity, foster
-            connections, and push the boundaries of what's possible.
+            connections, and push the boundaries of what&apos;s possible.
           </p>
         </div>
 
@@ -82,8 +82,8 @@ export default function Mission() {
 
         <div className="mt-16 text-center">
           <p className="text-xl text-purple-700 font-medium">
-            "We don't just build products; we create experiences that change how
-            people see and interact with the digital world."
+          &ldquo;We don&apos;t just build products; we create experiences that change how
+            people see and interact with the digital world.&ldquo;
           </p>
         </div>
       </div>
