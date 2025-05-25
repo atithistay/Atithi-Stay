@@ -3,6 +3,7 @@ import AboutMission from '@/components/about/AboutMission';
 import AboutTeam from '@/components/about/AboutTeam';
 import AboutFAQ from '@/components/about/AboutFAQ';
 import AboutStats from '@/components/about/AboutStats';
+import ConnectUsForm from '@/components/ConnectUs';
 
 export const metadata = {
   title: 'About Us | Atithi Stay - Find Your Perfect Paying Guest Accommodation',
@@ -20,6 +21,7 @@ export default function AboutPage() {
       {/* <AboutTestimonials /> */}
       <AboutFAQ />
       {/* <AboutContact /> */}
+      <ConnectUsForm/>
     </main>
   );
 }

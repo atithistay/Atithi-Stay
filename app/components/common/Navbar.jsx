@@ -18,6 +18,7 @@ export default function Navbar() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Connect US', href: '/#connectus' },
     // { name: 'Contact', href: '/contact' },
   ];
 

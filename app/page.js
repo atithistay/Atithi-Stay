@@ -1,6 +1,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import Testimonials from "@/components/home/Testimonials";
 import FeaturedPGs from "@/components/home/FeaturedPGs";
+import ConnectUsForm from "./components/ConnectUs";
 
 export const metadata = {
   title:
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <FeaturedPGs />
       <Testimonials />
+      <ConnectUsForm/>
     </div>
   );
 }

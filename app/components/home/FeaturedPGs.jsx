@@ -13,8 +13,10 @@ import {
   Coffee,
   CheckCircle,
   Zap,
+  Calendar,
 } from "lucide-react";
 import samplePG from "@/samplePg";
+import Select from "react-select";
 
 function PGCard({ pg }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -41,18 +43,33 @@ function PGCard({ pg }) {
       )
     : { rent: pg.min_rent };
 
-      // Get available sharing types
+  // Get available sharing types
   const sharingTypes = pg.rooms
-  ? [...new Set(pg.rooms.map(room => {
-      switch(room.type) {
-        case 'single': return '1';
-        case 'double': return '2';
-        case 'triple': return '3';
-        default: return null;
-      }
-    }).filter(Boolean))].sort()
-  : [];
-
+    ? [
+        ...new Set(
+          pg.rooms
+            .map((room) => {
+              switch (room.type) {
+                case "single":
+                case "master":
+                case "common":
+                  return "1";
+                case "double":
+                case "master_double":
+                case "common_double":
+                  return "2";
+                case "triple":
+                  return "3";
+                case "quad":
+                  return "4";
+                default:
+                  return null;
+              }
+            })
+            .filter(Boolean)
+        ),
+      ].sort()
+    : [];
 
   return (
     <motion.div
@@ -144,10 +161,18 @@ function PGCard({ pg }) {
           </p>
         </div>
 
+        <div className="flex items-center text-gray-600 mb-4">
+          <Calendar className="h-4 w-4 flex-shrink-0 mr-2" />
+          <p className="text-sm">Possession: {pg.possession || "Immediate"}</p>
+        </div>
+
         {sharingTypes.length > 0 && (
           <div className="flex gap-1.5 mb-3">
-            {sharingTypes.map(type => (
-              <div key={type} className="bg-gray-100 px-2 py-0.5 rounded text-xs font-medium text-gray-600">
+            {sharingTypes.map((type) => (
+              <div
+                key={type}
+                className="bg-gray-100 px-2 py-0.5 rounded text-xs font-medium text-gray-600"
+              >
                 {type} Sharing
               </div>
             ))}
@@ -178,13 +203,43 @@ function PGCard({ pg }) {
 
 export default function FeaturedPGs() {
   const [featuredPGs, setFeaturedPGs] = useState([]);
+  const [allPgs, setAllPgs] = useState(samplePG);
   const [loading, setLoading] = useState(true);
   const [displayCount, setDisplayCount] = useState(3);
+  const [selectedType, setSelectedType] = useState({ value: "all", label: "All Types" });
+
+  const pgTypeOptions = [
+    { value: "all", label: "All Types" },
+    { value: "male", label: "Male Only PGs" },
+    { value: "female", label: "Female Only PGs" },
+    { value: "unisex", label: "Unisex PGs" },
+  ];
+
+  const customSelectStyles = {
+    control: (base) => ({
+      ...base,
+      minHeight: "44px",
+      borderRadius: "0.5rem",
+      borderColor: "#d1d5db",
+      "&:hover": {
+        borderColor: "#10b981",
+      },
+    }),
+    option: (base, { isFocused, isSelected }) => ({
+      ...base,
+      backgroundColor: isSelected
+        ? "#10b981"
+        : isFocused
+        ? "#ecfdf5"
+        : undefined,
+      color: isSelected ? "white" : "#374151",
+    }),
+  };
 
   useEffect(() => {
     const fetchFeaturedPGs = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 800));
         setFeaturedPGs(samplePG);
         setLoading(false);
       } catch (error) {
@@ -194,6 +249,21 @@ export default function FeaturedPGs() {
 
     fetchFeaturedPGs();
   }, []);
+
+  useEffect(() => {
+    if (selectedType?.value && allPgs?.length > 0) {
+      if (selectedType?.value === "all") {
+        setFeaturedPGs(allPgs);
+        setDisplayCount(3)
+        return;
+      }
+      const filteredPGs = allPgs.filter(
+        (pg) => selectedType?.value?.toLowerCase() === pg.gender?.toLowerCase()
+      );
+      setFeaturedPGs(filteredPGs);
+      setDisplayCount(3)
+    }
+  }, [selectedType]);
 
   const showMore = () => {
     setDisplayCount((prev) => Math.min(prev + 3, featuredPGs.length));
@@ -210,6 +280,17 @@ export default function FeaturedPGs() {
           <p className="text-gray-600 text-lg">
             Discover premium living spaces handpicked for you
           </p>
+        </div>
+
+        <div className="mb-8 max-w-xs mx-auto">
+          <Select
+            options={pgTypeOptions}
+            value={selectedType}
+            onChange={setSelectedType}
+            styles={customSelectStyles}
+            isSearchable={false}
+            className="text-gray-700"
+          />
         </div>
 
         {loading ? (

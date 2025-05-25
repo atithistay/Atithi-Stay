@@ -22,6 +22,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/#connectus" className="hover:text-white">
+                  Connect Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/about#ourteam" className="hover:text-white">
                   Our Team
                 </Link>

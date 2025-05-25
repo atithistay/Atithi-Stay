@@ -50,7 +50,7 @@ export default function Testimonials() {
 
   return (
     <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Users Say</h2>
           <div className="w-20 h-1 bg-emerald-500 mx-auto rounded-full"></div>
