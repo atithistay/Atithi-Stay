@@ -167,11 +167,11 @@ function PGCard({ pg }) {
         </div>
 
         {sharingTypes.length > 0 && (
-          <div className="flex gap-1.5 mb-3">
+          <div className="flex flex-wrap gap-1.5 mb-3">
             {sharingTypes.map((type) => (
               <div
                 key={type}
-                className="bg-gray-100 px-2 py-0.5 rounded text-xs font-medium text-gray-600"
+                className="bg-gray-100 px-2 py-0.5 rounded text-xs font-medium text-gray-600 flex"
               >
                 {type} Sharing
               </div>
