@@ -125,7 +125,7 @@ export default function Footer() {
                     />
                   </svg>
                   <div className="">
-                    <span>+919819507063 | +919670266364 | +919004094376</span>
+                    <span>+919819507063 | +918655346119 | +919004094376</span>
                   </div>
                 </div>
               </li>
