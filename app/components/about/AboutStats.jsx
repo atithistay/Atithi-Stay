@@ -15,7 +15,7 @@ export default function AboutStats() {
       color: "bg-indigo-600",
     },
     { number: 2500, label: "PG Properties", suffix: "+", color: "bg-rose-500" },
-    { number: 25, label: "Cities Covered", suffix: "", color: "bg-amber-500" },
+    { number: "mumbai", label: "City Covered", suffix: "", color: "bg-amber-500" },
     {
       number: 98,
       label: "Customer Satisfaction",
