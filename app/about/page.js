@@ -9,6 +9,9 @@ import Head from 'next/head';
 export const metadata = {
   title: 'About Us | Atithi Stay - Find Your Perfect Paying Guest Accommodation',
   description: 'Learn about Atithi Stay, our mission, services, and the team behind the best PG accommodation platform in the region.',
+  alternates: {
+    canonical: 'https://www.atithistaymumbai.com/',
+  },
 };
 
 export default function AboutPage() {
