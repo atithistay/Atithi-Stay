@@ -11,6 +11,9 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  <Head>
+    <meta name="robots" content="index,follow" />
+  </Head>
   return (
     <main className="min-h-screen bg-gray-50">
       {/* <HeroSection /> */}

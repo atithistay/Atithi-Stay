@@ -22,6 +22,7 @@ export const metadata = {
     "Atithi Stay Mumbai",
     "Best PG services",
   ],
+  robots: 'index, follow',
   authors: [{ name: "Atithi Stay Team", url: "https://atithistaymumbai.com" }],
   openGraph: {
     title: "Atithi Stay | Best PG in Mumbai for Students & Professionals",
