@@ -9,11 +9,14 @@ export const metadata = {
   description:
     "Discover Atithi Stay - Mumbai's trusted platform to find safe, affordable, and fully-furnished Paying Guest (PG) accommodations for students and professionals in cities like Pune, Mumbai, and Nagpur.",
   robots: "index, follow", 
+  alternates: {
+    canonical: 'https://www.atithistaymumbai.com/',
+  },
   openGraph: {
     title: "Atithi Stay | Best PG in Mumbai for Students & Professionals",
     description:
       "Explore premium PG stays with Atithi Stay across Mumbai. Fully-furnished, secure, and affordable accommodations tailored for students and professionals.",
-    url: "https://atithistaymumbai.com",
+    url: "https://www.atithistaymumbai.com",
     siteName: "Atithi Stay",
     locale: "en_IN",
     type: "website",
