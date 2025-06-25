@@ -4,6 +4,7 @@ import AboutTeam from '@/components/about/AboutTeam';
 import AboutFAQ from '@/components/about/AboutFAQ';
 import AboutStats from '@/components/about/AboutStats';
 import ConnectUsForm from '@/components/ConnectUs';
+import Head from 'next/head';
 
 export const metadata = {
   title: 'About Us | Atithi Stay - Find Your Perfect Paying Guest Accommodation',
