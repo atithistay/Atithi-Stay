@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ConnectUsForm() {
   const [formData, setFormData] = useState({
@@ -20,8 +21,21 @@ export default function ConnectUsForm() {
     }));
   };
 
+  const validateIndianMobile = (number) => {
+    const pattern = /^[6-9]\d{9}$/; // starts with 6-9 and is 10 digits
+    return pattern.test(number);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate mobile number
+    if (!validateIndianMobile(formData.mobile)) {
+      toast.dismiss();
+      toast.error("Please enter a valid Indian mobile number.");
+      return;
+    }
+
     setIsSubmitting(true);
     setMessage("");
 
@@ -40,6 +54,9 @@ export default function ConnectUsForm() {
         setMessage(
           "Thank you! Your informations have been submitted successfully."
         );
+        toast.dismiss();
+        toast.success("Form submitted successfully!");
+
         await fetch("/api/send-email", {
           method: "POST",
           headers: {
@@ -56,9 +73,13 @@ export default function ConnectUsForm() {
         });
       } else {
         setMessage(data.error || "Something went wrong. Please try again.");
+        toast.dismiss();
+        toast.error(data.error || "Submission failed.");
       }
     } catch (error) {
       setMessage("Network error. Please try again.");
+      toast.dismiss();
+      toast.error("Network error occurred.");
 
       const updatedFormData = {
         ...formData,
@@ -82,6 +103,8 @@ export default function ConnectUsForm() {
       id="connectus"
       className="py-20 bg-gradient-to-b from-slate-50 to-white"
     >
+      <Toaster position="top-right" reverseOrder={false} />
+
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -106,6 +129,7 @@ export default function ConnectUsForm() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Name Field */}
           <div className="space-y-2">
             <label
               htmlFor="name"
@@ -125,6 +149,7 @@ export default function ConnectUsForm() {
             />
           </div>
 
+          {/* Email Field */}
           <div className="space-y-2">
             <label
               htmlFor="email"
@@ -144,6 +169,7 @@ export default function ConnectUsForm() {
             />
           </div>
 
+          {/* Mobile Field */}
           <div className="space-y-2">
             <label
               htmlFor="mobile"
@@ -163,6 +189,7 @@ export default function ConnectUsForm() {
             />
           </div>
 
+          {/* Occupancy Field */}
           <div className="space-y-2">
             <label
               htmlFor="occupancy"

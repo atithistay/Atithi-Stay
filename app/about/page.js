@@ -8,7 +8,7 @@ import Head from 'next/head';
 
 export const metadata = {
   title: 'About Us | Atithi Stay - Find Your Perfect Paying Guest Accommodation',
-  description: 'Get to know Atithi Stay - your trusted partner for safe, affordable, and fully-furnished PG accommodations across Mumbai, Pune, and Nagpur. Learn about our mission to simplify city living for students and professionals, explore our range of services, and meet the dedicated team behind the region’s leading PG rental platform.',
+  description: 'Learn about Atithi Stay, our mission, services, and the team behind the best PG accommodation platform in the region.',
   alternates: {
     canonical: 'https://www.atithistaymumbai.com/',
   },
